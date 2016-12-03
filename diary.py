@@ -54,14 +54,20 @@ def read_entry(search_query = None):
         print("="*len(timestamp))
         print(entry.content)
         print("N) next entry")
+        print("d) delete entry")
         print("q) return to main menu")
 
         next_action = raw_input('Action: [Nq] ').lower().strip()
         if next_action == 'q':
             break
+        elif next_action == 'd':
+            delete_entry(entry)
 
 def delete_entry(entry):
     """delete an entry"""
+    if raw_input('Are you sure? [Yn] ').lower().strip() == 'y':
+        entry.delete_instance()
+        print("Entry deleted!")
 
 def search_entry():
     """Search entry for string"""
